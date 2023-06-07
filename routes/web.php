@@ -34,7 +34,7 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
 
 Route::middleware('auth')->controller(App\Http\Controllers\PostController::class)->group(function () {
     Route::get('/myposts', 'viewMyPosts')->name('myposts');
-    Route::get('/post/create', 'create')->name('create');
+    Route::get('/post/create', 'create')->name('post.create');
     Route::post('/post/create/save', 'store')->name('store');
     Route::put('/post/update{post}', 'update')->name('update');
     Route::delete('/post/delete/{post}', 'delete')->name('delete');

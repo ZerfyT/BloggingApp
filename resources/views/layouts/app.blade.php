@@ -49,7 +49,7 @@
                         @guest
                         @else
                             <li class="nav-link">
-                                <a class="nav-link" href="{{ url('/myposts') }}">{{ __('Create New Post') }}</a>
+                                <a class="nav-link" href="{{ route('post.create') }}">{{ __('Create New Post') }}</a>
                             </li>
                         @endguest
 
