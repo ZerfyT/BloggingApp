@@ -28,6 +28,7 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/latest-posts', 'latestPosts')->name('latest-posts');
     Route::get('/{post}', 'postShow')->name('post.show');
+    Route::get('/search', 'search')->name('search');
 
 });
 
@@ -35,7 +36,6 @@ Route::middleware('auth')->controller(App\Http\Controllers\PostController::class
     Route::get('/myposts', 'viewMyPosts')->name('myposts');
     Route::get('/post/create', 'create')->name('create');
     Route::post('/post/create/save', 'store')->name('store');
-    Route::get('/post/edit/{post}', 'edit')->name('edit');
     Route::put('/post/update{post}', 'update')->name('update');
     Route::delete('/post/delete/{post}', 'delete')->name('delete');
 });

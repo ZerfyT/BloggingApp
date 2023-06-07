@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -48,5 +49,13 @@ class HomeController extends Controller
         $post = Post::find($id);
 
         return view('post-body', compact('post'));
+    }
+
+    public function search(Request $request)
+    {
+        $key = $request->search;
+        $posts = Post::where('title', '%'.$key.'%')->paginate(5);
+
+        return view('search');
     }
 }

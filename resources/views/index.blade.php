@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container">
+        <div class="d-flex align-content-end">
+            @include('layouts.search')
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 @foreach ($posts as $post)

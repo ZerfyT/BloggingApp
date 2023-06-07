@@ -13,8 +13,14 @@
                     {{ $post->content }}
                 </div>
             </div>
+            @php
+                $comments = $post->comments();
+            @endphp
             <div class="col-md-4">
-                <div class="card">
+                @foreach ($comments as $comment)
+                    <x-comment :content="$comment->content" :date="$comment->created_at->diffForHumans()" :userName="$comment->user->name" />
+                @endforeach
+                {{-- <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Recent Posts</h5>
                         <ul class="list-group">
@@ -25,10 +31,10 @@
                                     </a>
                                 </li>
                             @endforeach --}}
-                        </ul>
-                    </div>
-                </div>
+                </ul>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 @endsection

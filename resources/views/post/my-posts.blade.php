@@ -21,7 +21,7 @@
                     <td>{{ $post->content }}</td>
                     <td>{{ $post->created_at }}</td>
                     <td>
-                        <a href="{{ route('edit', $post->id) }}">Edit</a>
+                        <a href="{{ route('update', $post->id) }}">Edit</a>
                         <form action="{{ route('delete', $post->id) }}" method="POST" style="display: inline">
                             @csrf
                             @method('DELETE')

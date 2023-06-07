@@ -46,12 +46,12 @@
                         <li class="nav-link">
                             <a class="nav-link" href="{{ url('/contact') }}">{{ __('Contact Us') }}</a>
                         </li>
-
-                        @auth
+                        @guest
+                        @else
                             <li class="nav-link">
-                                <a class="nav-link" href="{{ route('myposts') }}">{{ __('Create New Post') }}</a>
+                                <a class="nav-link" href="{{ url('/myposts') }}">{{ __('Create New Post') }}</a>
                             </li>
-                        @endauth
+                        @endguest
 
                     </ul>
 

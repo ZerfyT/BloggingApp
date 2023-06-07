@@ -38,9 +38,26 @@ class PostController extends Controller
         ]);
         $post->save();
 
-        $user = auth()->user();
-        $posts = Post::where('user_id', $user->id)->get();
+        return redirect()->back()->with('success', 'Post created successfully');
+    }
 
-        return redirect()->route('myPosts', ['posts' => $posts]);
+    public function delete(Request $request, $id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect()->back()->with('success', 'Post deleted successfully');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->image = $request->file('image')->store('images', 'public');
+        $post->save();
+
+        return redirect()->back()->with('success', 'Post updated successfully');
+
     }
 }

@@ -1,3 +1,11 @@
-<div>
-    <!-- It is not the man who has too little, but the man who craves more, that is poor. - Seneca -->
+<div class="card border-top my-2">
+    <div class="comment-header d-flex justify-content-between">
+        <h4>{{ $userName }}</h4>
+        <div>{{ $date }}</div>
+    </div>
+    <hr>
+    <div class="comment-body">
+        {{ $content }}
+    </div>
+
 </div>
