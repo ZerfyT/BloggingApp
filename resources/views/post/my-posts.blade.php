@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="{{ route('create') }}">Create New Post</a>
+    <a href="{{ route('post.create') }}">Create New Post</a>
 
     <table>
         <thead>
@@ -21,8 +21,8 @@
                     <td>{{ $post->content }}</td>
                     <td>{{ $post->created_at }}</td>
                     <td>
-                        <a href="{{ route('update', $post->id) }}">Edit</a>
-                        <form action="{{ route('delete', $post->id) }}" method="POST" style="display: inline">
+                        <a href="{{ route('post.update', $post->id) }}">Edit</a>
+                        <form action="{{ route('post.delete', $post->id) }}" method="POST" style="display: inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Delete</button>

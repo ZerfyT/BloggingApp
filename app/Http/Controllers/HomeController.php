@@ -48,7 +48,7 @@ class HomeController extends Controller
     {
         $post = Post::find($id);
 
-        return view('post-body', compact('post'));
+        return view('layouts.index-content', compact('post'));
     }
 
     public function search(Request $request)

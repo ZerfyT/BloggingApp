@@ -22,7 +22,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('index') }}">
                     {{ __('BlogApp') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -38,21 +38,14 @@
                             <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
                         </li> --}}
                         <li class="nav-link">
-                            <a class="nav-link" href="{{ url('/latest') }}">{{ __('Latest Posts') }}</a>
+                            <a class="nav-link" href="{{ route('post.latest') }}">{{ __('Latest Posts') }}</a>
                         </li>
                         <li class="nav-link">
-                            <a class="nav-link" href="{{ url('/about') }}">{{ __('About') }}</a>
+                            <a class="nav-link" href="{{ route('about') }}">{{ __('About') }}</a>
                         </li>
                         <li class="nav-link">
-                            <a class="nav-link" href="{{ url('/contact') }}">{{ __('Contact Us') }}</a>
+                            <a class="nav-link" href="{{ route('contact') }}">{{ __('Contact Us') }}</a>
                         </li>
-                        @guest
-                        @else
-                            <li class="nav-link">
-                                <a class="nav-link" href="{{ route('post.create') }}">{{ __('Create New Post') }}</a>
-                            </li>
-                        @endguest
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -82,6 +75,9 @@
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('post.my') }}">
+                                        {{ __('View My Posts') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

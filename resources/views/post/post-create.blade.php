@@ -6,7 +6,7 @@
             <div class="col-md-8 offset-md-2">
                 <h1>Create New Post</h1>
                 <hr>
-                <form method="POST" action="{{ route('store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group mb-2">

@@ -7,15 +7,6 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    //
-    public function viewMyPosts()
-    {
-        $user = auth()->user();
-        $posts = Post::where('user_id', $user->id)->get();
-
-        return view('post.my-posts', compact('posts'));
-    }
-
     public function create()
     {
         return view('post.post-create');
@@ -58,6 +49,13 @@ class PostController extends Controller
         $post->save();
 
         return redirect()->back()->with('success', 'Post updated successfully');
+    }
 
+    public function myPosts()
+    {
+        $user = auth()->user();
+        $posts = Post::where('user_id', $user->id)->get();
+
+        return view('post.my-posts', compact('posts'));
     }
 }
