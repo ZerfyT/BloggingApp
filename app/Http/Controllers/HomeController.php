@@ -22,10 +22,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::paginate(5);
+        if($request->has('post')) {
+            $post = Post::find($request->post);
+            return view('layouts.index-content', compact('post'));
+        }
 
+        $posts = Post::paginate(5);
         return view('index', compact('posts'));
     }
 
@@ -36,12 +40,13 @@ class HomeController extends Controller
 
     public function contact()
     {
-        return view('contact');
+        return view('contacts');
     }
 
     public function latestPosts()
     {
-        return view('latest-posts');
+        $posts = Post::latest()->paginate(5);
+        return view('index', compact('posts'));
     }
 
     public function postShow($id)
@@ -54,8 +59,9 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $key = $request->search;
-        $posts = Post::where('title', '%'.$key.'%')->paginate(5);
+        $posts = Post::where('title', 'Like', '%'.$key.'%')->paginate(5);
+        // dd($request->search, $posts);
 
-        return view('search');
+        return view('index', compact('posts'));
     }
 }

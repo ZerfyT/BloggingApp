@@ -1,16 +1,16 @@
 <div class="my-4">
-    <a href="{{ route('post.show', $id) }}" class="card-link">
-        <div class="card">
+    <a href="{{ url('/?post='.$id) }}" class="card-link text-decoration-none">
+        <div class="card shadow-sm">
             <img class="card-img-top img-fluid" src="{{ $imageUrl }}" alt="Post Image">
             <div class="card-body">
-                <h5 class="card-title">{{ $title }}</h5>
+                <h3 class="card-title">{{ $title }}</h3>
                 <p class="card-text">{{ $content }}</p>
             </div>
             <div class="card-footer">
-                <small class="text-muted">
-                    <strong>Author:</strong> {{ $author }} | <strong>Date:</strong>
+                <div class="text-muted text-end w-100">
+                    <strong></strong> {{ $author }} <span class="fw-bold" style="font-size: 1.1rem">|</span> <strong></strong>
                     {{ $dateCreate }}
-                </small>
+                </div>
             </div>
         </div>
     </a>
